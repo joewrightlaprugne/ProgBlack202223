@@ -1,0 +1,88 @@
+[
+    {
+        "id": 0,
+        "imageFile": "img0.jpg",
+        "title": "Test title",
+        "uploadDate": 1174733895000,
+        "uploaderName": "User1",
+        "likes": 16,
+        "dislikes": 0,
+        "description": "Test description",
+        "location": "Crete, Greece",
+        "comments": [
+            {
+                "username": "Test user",
+                "commentText": "Test comment",
+                "commentLikes": 1,
+                "commentDislikes": 3,
+                "commentId": 0
+            },
+            {
+                "username": "Test user 2",
+                "commentText": "Test comment 2",
+                "commentLikes": 3,
+                "commentDislikes": 3,
+                "commentId": 1
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "imageFile": "img1.jpg",
+        "title": "Test title 2",
+        "uploadDate": 1374733928000,
+        "uploaderName": "User2",
+        "likes": 8,
+        "dislikes": 0,
+        "description": "Test description",
+        "location": "Athens, Greece",
+        "comments": [
+            {
+                "username": "Test user",
+                "commentText": "Test comment",
+                "commentLikes": 0,
+                "commentDislikes": 4,
+                "commentId": 0
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "imageFile": "img2.png",
+        "title": "Coastal Greece",
+        "uploadDate": 1674734022000,
+        "uploaderName": "User3",
+        "likes": 0,
+        "dislikes": 0,
+        "description": "",
+        "location": "Crete",
+        "comments": [
+            {
+                "username": "test2",
+                "commentText": "test2",
+                "commentLikes": 0,
+                "commentDislikes": 0,
+                "commentId": 0
+            },
+            {
+                "username": "test3",
+                "commentText": "test3",
+                "commentLikes": 0,
+                "commentDislikes": 0,
+                "commentId": 1
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "imageFile": "img3.jpg",
+        "title": "Grand canyon",
+        "uploadDate": 1674745028000,
+        "uploaderName": "Joe",
+        "likes": 0,
+        "dislikes": 0,
+        "description": "",
+        "location": "Arizona",
+        "comments": []
+    }
+]
