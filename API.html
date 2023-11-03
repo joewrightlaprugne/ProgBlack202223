@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ProgBlack 2022-2023</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid p-5 bg-success text-white text-center col-sm">
+    <h1>Programming Black Project 2022-2023: API documentation</h1>
+</div>
+
+<div class="container-fluid p-0 my-2 col-sm-4">
+    <h3>JSON Entity: Submitted image</h3>
+    <h5><b>Attributes:</b></h5>
+    <h6><b>id (integer)</b>: Unique identifier for the submitted image, allows images to be sorted chronologically.</h6>
+    <h6><b>imageFile (string)</b>: The name of the image file stored on disk, in the form imgn.ext, where n is the image's <b>id</b>, and ext is jpg, jpeg, or png.</h6>
+    <h6><b>title (string)</b>: Title of the image.</h6>
+    <h6><b>uploadDate (integer)</b>: Unix timestamp (milliseconds) corresponding to the moment the image was submitted.</h6>
+    <h6><b>uploaderName (string)</b>: Username of the person who submitted the image.</h6>
+    <h6><b>likes (integer)</b>: Number of times the image has been liked.</h6>
+    <h6><b>dislikes (integer)</b>: Number of times the image has been disliked.</h6>
+    <h6><b>description (string)</b>: Description of the image.</h6>
+    <h6><b>location (string)</b>: Location where the image was taken.</h6>
+    <h6><b>comments (Object)</b>: Array containing all the comments associated with the image (see "JSON Entity: Comment").</h6>
+    <hr></hr>
+</div>
+<div class="container-fluid p-0 my-2 col-sm-4">
+    <h3>Image preview</h3>
+    <h5><b>Attributes:</b></h5>
+    <h6><b>id (integer)</b>: Unique identifier for the submitted image, allows images to be sorted chronologically.</h6>
+    <h6><b>title (string)</b>: Title of the image.</h6>
+    <h6><b>likes (integer)</b>: Number of times the image has been liked.</h6>
+    <h6><b>location (string)</b>: Location where the image was taken.</h6>
+    <hr></hr>
+</div>
+
+<div class="container-fluid p-0 my-2 col-sm-4">
+    <h3>JSON Entity: Comment</h3>
+    <h5><b>Attributes:</b></h5>
+    <h6><b>username (string)</b>: Username of the person who submitted the comment.</h6>
+    <h6><b>commentText (string)</b>: The comment's text.</h6>
+    <h6><b>commentLikes (integer)</b>: Number of times the comment has been liked.</h6>
+    <h6><b>commentDislikes (integer)</b>: Number of times the comment has been disliked.</h6>
+    <h6><b>commentId (integer)</b>: Unique identifier for the submitted comment.</h6>
+    <hr></hr>
+</div>
+
+<div class="container-fluid p-0 my-2 col-sm-4">
+    <h3>GET /image/:id</h3>
+    <p><b>URL Parameters:</b> id</p>
+    <p>Returns the submitted image with ID <b>"id"</b></p>
+    <p><b>Successful return value (HTTP 200):</b> Returns a Submitted image (object)</p>
+    <p><b>Unsuccessful return value (HTTP 404):</b> Empty array</p>
+    <hr></hr>
+</div>
+
+<div class="container-fluid p-0 my-2 col-sm-4">
+    <h3>GET /search/:searchterm/:sort</h3>
+    <p><b>URL Parameters:</b> searchterm, sort</p>
+    <p>Returns the Previews of all images whose titles or locations contain <b>"searchterm"</b> (non-case sensitive). <b>sort</b> specifies the order in which the results are sorted. GET /image/:id can be used to get all the information about the submitted image.</p>
+    <p><b>sort = 0</b>: Sort by Popularity</p>
+    <p><b>sort = 1</b>: Sort from newest to oldest</p>
+    <p><b>sort = 2</b>: Sort from oldest to newest</p>
+    <p><b>Successful return value (HTTP 200):</b> Array of Image Previews (object)</p>
+    <hr></hr>
+</div>
+
+<div class="container-fluid p-0 my-2 col-sm-4">
+    <h3>GET /getcomment/:imageid/:commentid</h3>
+    <p><b>URL Parameters:</b> imageid, commentid</p>
+    <p>Returns the Comment with id "commentid" from the image with id "imageid"</p>
+    <p><b>Successful return value (HTTP 200):</b> Comment (object)</p>
+    <p><b>Unsuccessful return value (HTTP 404):</b> Empty array</p>
+    <hr></hr>
+</div>
+
+<div class="container-fluid p-0 my-2 col-sm-4">
+    <h3>GET /getallcomments/:imageid</h3>
+    <p><b>URL Parameters:</b> imageid</p>
+    <p>Returns an array containing all the Comments from the image with id "imageid"</p>
+    <p><b>Successful return value (HTTP 200):</b> Array of Comments (object)</p>
+    <p><b>Unsuccessful return value (HTTP 404):</b> Empty array</p>
+    <hr></hr>
+</div>
+
+<div class="container-fluid p-0 my-2 col-sm-4">
+    <h3>POST /newComment</h3>
+    <p><b>Body requirements:</b> JSON (username, commentText, id)</p>
+    <p>Creates a new comment under the image with the given id.</p>
+    <p><b>Successful return value (HTTP 200)</b> "Success" (string)</p>
+    <hr></hr>
+</div>
+
+<div class="container-fluid p-0 my-2 col-sm-4">
+    <h3>POST /uploadChunk/:fileName</h3>
+    <p><b>URL Parameters:</b> fileName</p>
+    <p><b>Body requirements:</b> application/octet-stream</p>
+    <p>Adds a "chunk" of data to the file specified in the URL. To upload a file, you should split it into chunks and then use this method multiple times.</p>
+    <p><b>Successful return value (HTTP 200):</b> "File uploaded successfully" (string)</p>
+    <hr></hr>
+</div>
+
+<div class="container-fluid p-0 my-2 col-sm-4">
+    <h3>POST /submitImage</h3>
+    <p><b>Body requirements:</b> JSON (username, description, location, title, fileValue)</p>
+    <p>Creates a new image submission using the provided information, intended to be used after uploading an image with uploadChunk. fileValue is the name of the image file that was uploaded.</p>
+    <p><b>Successful return value (HTTP 200):</b> "Success" (string)</p>
+    <hr></hr>
+</div>
